@@ -1,8 +1,7 @@
 [build]
-  # Usamos un comando explícito que instala y construye desde la carpeta `frontend`.
-  # Esto evita problemas con entornos donde `base` no cambia el PATH de npm.
-  command = "npm ci --prefix frontend && npm run build --prefix frontend"
-  publish = "frontend/dist"
+  base = "frontend"
+  command = "npm ci && npm run build"
+  publish = "dist"
 
 [context.production.environment]
   NODE_ENV = "production"
