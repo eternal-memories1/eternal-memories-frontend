@@ -50,7 +50,7 @@ const AuthPage = ({ modo: modoProp = 'login' }) => {
         setError('');
         try {
             // Nota: aquí llamamos directamente a la API en lugar de usar export importado de api.js para evitar hacer más cambios en services
-            const res = await axios.post('/api/auth/google', { token: credentialResponse.credential });
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/google`, { token: credentialResponse.credential });
             iniciarSesion(res.data.usuario, res.data.token);
             navigate('/dashboard');
         } catch (err) {
