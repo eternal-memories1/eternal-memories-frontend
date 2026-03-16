@@ -100,24 +100,6 @@ Cloudinary almacena las fotos, videos y música del memorial.
 
 En la carpeta `backend/`, crea un archivo llamado **`.env`** (sin extensión adicional) y pega lo siguiente reemplazando los valores:
 
-```env
-# ── Base de Datos ────────────────────────────────────────────────────────────
-MONGODB_URI=mongodb+srv://admin:TuPassword@cluster0.xxxxx.mongodb.net/eternal-memories?retryWrites=true&w=majority
-
-# ── Cloudinary ───────────────────────────────────────────────────────────────
-CLOUDINARY_CLOUD_NAME=tu_cloud_name
-CLOUDINARY_API_KEY=123456789012345
-CLOUDINARY_API_SECRET=AbCdEfGhIjKlMnOpQrStUvWxYz
-
-# ── JWT (puede ser cualquier texto largo y secreto) ──────────────────────────
-JWT_SECRET=EsteEsUnSecretoMuyLargoYSeguro2024Eternal
-
-# ── Servidor ─────────────────────────────────────────────────────────────────
-PORT=5000
-FRONTEND_URL=http://localhost:5173
-NODE_ENV=development
-```
-
 > **💡 Tip para `JWT_SECRET`:** Puede ser cualquier cadena larga aleatoria. Por ejemplo, abre una terminal y ejecuta:
 > ```bash
 > node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
