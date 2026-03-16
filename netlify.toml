@@ -6,6 +6,14 @@
 [context.production.environment]
   NODE_ENV = "production"
 
+# ── Headers para Google OAuth y seguridad ──────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Permite que Google OAuth popup se comunique con la ventana padre
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    Cross-Origin-Embedder-Policy = "credentialless"
+
 # Nota: si quieres previsualizar con `netlify dev`, puedes usar:
 # [dev]
 #   command = "npm run dev --prefix frontend"
