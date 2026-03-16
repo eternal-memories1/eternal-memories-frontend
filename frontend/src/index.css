@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Variables globales ─────────────────────────────────────────────── */
+:root {
+  --color-gold: #e8c46a;
+  --color-dark: #1a1a2e;
+  --color-medium: #16213e;
+}
+
+/* ── Scroll personalizado ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0f0f1a; }
+::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 3px; }
+
+/* ── Tipografía base ────────────────────────────────────────────────── */
+body {
+  @apply font-sans bg-memorial-dark text-white;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Clases de utilidad personalizadas ──────────────────────────────── */
+@layer components {
+  .btn-gold {
+    @apply bg-memorial-accent text-memorial-dark font-semibold px-6 py-3 rounded-full
+           hover:bg-memorial-gold transition-all duration-300 shadow-lg
+           hover:shadow-yellow-400/40 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply border border-memorial-accent text-memorial-accent px-6 py-3 rounded-full
+           hover:bg-memorial-accent hover:text-memorial-dark transition-all duration-300;
+  }
+
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+  }
+
+  .text-gold {
+    @apply text-memorial-accent;
+  }
+
+  /* Gradiente de texto dorado */
+  .gradient-text {
+    background: linear-gradient(135deg, #e8c46a, #f0d080, #c8a84b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Slot de anuncio */
+  .ad-slot {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden
+           flex items-center justify-center text-white/30 text-sm;
+  }
+
+  /* Overlay de cine oscuro */
+  .cinema-overlay {
+    @apply fixed inset-0 z-50 bg-black flex flex-col items-center justify-center;
+  }
+}
+
+/* ── Temas del memorial ──────────────────────────────────────────────── */
+.tema-oscuro  { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+.tema-claro   { background: linear-gradient(135deg, #f8f5f0 0%, #e8dcc8 100%); color: #333; }
+.tema-sepia   { background: linear-gradient(135deg, #2d2010 0%, #4a3520 50%, #2d2010 100%); }
+.tema-aurora  { background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 30%, #162032 60%, #0d1b2a 100%); }
+
+/* ── Animación de slideshow ─────────────────────────────────────────── */
+.slide-enter   { opacity: 0; transform: scale(1.05); }
+.slide-active  { opacity: 1; transform: scale(1); transition: opacity 1s ease, transform 1s ease; }
+.slide-exit    { opacity: 0; transform: scale(0.95); transition: opacity 0.5s ease; }
