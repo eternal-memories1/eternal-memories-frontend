@@ -185,6 +185,39 @@ VITE v5.x.x  ready in 359 ms
 
 Abre el navegador en **http://localhost:5173** para ver la plataforma.
 
+### Variables de entorno del Frontend
+
+El frontend usa un archivo `.env` en la carpeta `frontend/` (puedes copiar `frontend/.env.example`). Las variables importantes son:
+
+```env
+VITE_API_URL=https://api.tu-dominio.com
+VITE_GOOGLE_CLIENT_ID=941069558879-0qgbs8rhl621kn35p5dgqbk2gau8jam2.apps.googleusercontent.com
+VITE_ENABLE_ADS=true
+VITE_ADSENSE_CLIENT_ID=ca-pub-XXXXXXXXXXXXXX
+```
+
+**Cómo obtener tu Publisher ID (Publisher ID = `ca-pub-...`) de Google AdSense**
+
+1. Ve a https://www.google.com/adsense y accede con la cuenta que administra tu sitio.
+2. En el menú izquierdo selecciona **Account** → **Account information** (Información de la cuenta).
+3. Ahí verás **Publisher ID** (empieza por `ca-pub-...`). Copia ese valor.
+4. Pégalo en `frontend/.env` como `VITE_ADSENSE_CLIENT_ID=ca-pub-XXXXXXXXXXXXXX`.
+
+Notas sobre AdSense:
+- Para que los anuncios se muestren en producción debes tener el sitio registrado y aprobado en AdSense.
+- En desarrollo local puedes usar unidades de anuncio de prueba o desactivar `VITE_ENABLE_ADS=false` para evitar solicitudes reales.
+
+### Checklist — ¿falta algo para que funcione bien?
+
+- Backend: configura `backend/.env` con `MONGODB_URI`, `CLOUDINARY_*`, `JWT_SECRET`, `PORT` y `FRONTEND_URL`.
+- Cloudinary: credenciales (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`) válidas para subir medios.
+- MongoDB Atlas: string de conexión en `MONGODB_URI` y usuario creado.
+- OAuth (Google): `VITE_GOOGLE_CLIENT_ID` para iniciar sesión si usas Google OAuth.
+- AdSense: `VITE_ADSENSE_CLIENT_ID` y revisar que el sitio esté aprobado para mostrar anuncios en producción.
+- CORS / FRONTEND_URL: asegura que `FRONTEND_URL` en el backend coincida con `http://localhost:5173` (o tu URL de producción).
+
+Si quieres, puedo añadir un ejemplo de `frontend/.env` al README o crear un `frontend/.env.local.example` adaptado para desarrollo.
+
 ---
 
 ## 8. Rutas disponibles
