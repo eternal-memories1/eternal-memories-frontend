@@ -94,7 +94,7 @@ const LandingPage = () => {
                             Crear memorial gratis
                             <ChevronRight size={20} />
                         </Link>
-                        <Link to="/memorial/carlos-gardel-1890-1935" className="btn-ghost text-lg px-8 py-4 flex items-center gap-2 justify-center">
+                        <Link to="/memorial/carlos-gardel-tango-legend" className="btn-ghost text-lg px-8 py-4 flex items-center gap-2 justify-center">
                             <Play size={20} />
                             Ver demo
                         </Link>
