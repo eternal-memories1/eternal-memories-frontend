@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Instancia base de axios para todas las llamadas a la API
 const api = axios.create({
-    baseURL: '/api',
+    baseURL: `${import.meta.env.VITE_API_URL}/api`,
     timeout: 30000,
 });
 
