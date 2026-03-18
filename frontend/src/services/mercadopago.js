@@ -29,8 +29,6 @@ export const initMercadoPago = () => {
         window.mpLocale = locale;
 
         console.log('✅ Mercado Pago inicializado correctamente');
-        console.log('   - Locale:', locale);
-        console.log('   - Public Key:', publicKey.substring(0, 20) + '...');
         return true;
     } catch (error) {
         console.error('❌ Error al inicializar Mercado Pago:', error);
