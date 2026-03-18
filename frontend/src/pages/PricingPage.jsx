@@ -91,7 +91,7 @@ const PricingPage = () => {
         try {
             const res = await crearPreferenciaPago(planId);
             // Redirigir al Checkout de Mercado Pago
-            window.location.href = res.data.sandbox_init_point || res.data.init_point;
+            window.location.href = res.data.init_point || res.data.sandbox_init_point;
         } catch (err) {
             setError('Ocurrió un error al procesar el pago. Por favor intenta de nuevo.');
             setCargando(false);
