@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { MusicVideoProvider } from './context/MusicVideoContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { initMercadoPago } from './services/mercadopago';
 import LandingPage from './pages/LandingPage';
 import MemorialView from './pages/MemorialView';
 import Dashboard from './pages/Dashboard';
@@ -66,4 +68,13 @@ const App = () => (
     </BrowserRouter>
 );
 
-export default App;
+// Inicializar Mercado Pago cuando la app se monta
+const AppWithInit = () => {
+    useEffect(() => {
+        initMercadoPago();
+    }, []);
+
+    return <App />;
+};
+
+export default AppWithInit;

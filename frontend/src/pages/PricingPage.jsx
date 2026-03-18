@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { crearPreferenciaPago } from '../services/api';
+import { getMercadoPagoInstance } from '../services/mercadopago';
 import { Check, Star, Crown, AlertCircle, ArrowLeft, Lock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -86,11 +87,17 @@ const PricingPage = () => {
             return;
         }
 
+        // Verificar que Mercado Pago esté inicializado
+        if (!getMercadoPagoInstance()) {
+            setError('Mercado Pago no está configurado. Por favor, recarga la página.');
+            return;
+        }
+
         setCargando(true);
         setError('');
         try {
             const res = await crearPreferenciaPago(planId);
-            // Redirigir al Checkout de Mercado Pago
+            // Redirigir al Checkout de Mercado Pago (Producción: init_point, Fallback: sandbox_init_point)
             window.location.href = res.data.init_point || res.data.sandbox_init_point;
         } catch (err) {
             setError('Ocurrió un error al procesar el pago. Por favor intenta de nuevo.');
